@@ -56,7 +56,7 @@ sudo rpi-eeprom-update -a
 
 #### Install Chromedriver and Selenium
 
-- pre Updates
+#### Pre Updates
 
 ```
 sudo apt-get update
@@ -67,8 +67,8 @@ sudo apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
 - Install chromedriver
 
 Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
-Make sure you downloaded the right os version. ARM64 Tipp: To get versions Enter `chromium --product-version`
-Or `chromedriver --product-version`
+Make sure you downloaded the right os version. To get versions Enter `chromium --product-version`
+or `chromedriver --product-version` or `chromium-browser --product-version`
 after download unzip
 
 # Driver
@@ -110,7 +110,7 @@ Make sure you have a ssh public key and have access to the repository
 ssh-keygen
 cat ~/.ssh/id_rsa.pub
 
-git clonehttps://github.com/codebar-ag/raspberry-pi-kiosk
+git clone https://github.com/codebar-ag/raspberry-pi-kiosk-32bit
 ```
 
 
