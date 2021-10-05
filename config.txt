@@ -1,3 +1,6 @@
+#
+# CONFIG FILE for Raspberry-pi-kiosk-32bit version.
+#
 # For more options and information see
 # http://rpf.io/configtxt
 # Some settings may impact device functionality. See link above for details
