@@ -45,7 +45,10 @@ Ddisable Sleep Mode Dispaly
 # Firmeware Update
 
 ```
+sudo apt-get update
 sudo apt-get upgrade -y
+sudo apt-get update
+
 sudo rpi-eeprom-update
 sudo rpi-eeprom-update -a
 ```
@@ -59,8 +62,15 @@ sudo rpi-eeprom-update -a
 #### Pre Updates
 
 ```
-sudo apt-get update
 sudo apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
+sudo apt-get install libgles2-mesa libgles2-mesa-dev xorg-dev
+
+```
+
+#### Pre Updates
+
+```
+sudo apt-get install chromium-browser --yes
 
 ```
 
@@ -75,7 +85,9 @@ after download unzip
 
 ```
 sudo wget https://github.com/electron/electron/releases/download/v12.0.18/chromedriver-v12.0.18-linux-arm64.zip
-unzip chromedriver-v12.0.18-linux-arm64.zip
+sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-ia32.zip
+
+unzip chromedriver-v14.1.0-linux-ia32.zip
 ```
 
 Make sure to configure ChromeDriver on your system (move the chromedriver to /usr/lib)
@@ -102,6 +114,51 @@ LinkOne(https://tecadmin.net/setup-selenium-with-chromedriver-on-debian/)
 LinkTwo(https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
 _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_
 
+#### Configuration
+
+```
+sudo raspi-config
+```
+
+#### Set Video Resolution to 1920x1080/60hz
+- Einstellungen/Screen Configuration
+
+#### GL Driver
+
+Advanced Options / GL Driver / G2 GL (Fake KMS)
+
+#### Disable the compositor.
+
+Advanced Options / Compositor / No
+
+### Check 3D Drivers
+```
+sudo reboot
+cat /proc/device-tree/soc/firmwarekms@7e600000/status
+cat /proc/device-tree/v3dbus/v3d@7ec04000/status
+```
+If both commands return okay, then the hardware acceleration is working and activated.
+
+### Chrome
+
+### Plugins
+
+Chromium on Raspberry Pi OS comes with uBlock Origin and h264ify extensions installed by default. Make sure that h264ify
+is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi supports hardware-accelerated video decode.
+
+```
+https://www.linuxuprising.com/2021/04/how-to-enable-hardware-acceleration-in.html
+https://medium.com/for-linux-users/how-to-make-your-raspberry-pi-4-faster-with-a-64-bit-kernel-77028c47d653
+```
+
+#### Enable Flags
+
+```
+chrome://flags/#ignore-gpu-blocklist
+chrome://flags/#enable-gpu-rasterization
+chrome://flags/#enable-accelerated-video-decode
+```
+
 ### Clone Github Repository
 
 Make sure you have a ssh public key and have access to the repository
@@ -110,16 +167,15 @@ Make sure you have a ssh public key and have access to the repository
 ssh-keygen
 cat ~/.ssh/id_rsa.pub
 
-git clone https://github.com/codebar-ag/raspberry-pi-kiosk-32bit
+git clone https://github.com/codebar-ag/raspberry-pi-kiosk-32bit scripts
 ```
-
 
 ### Install Pyhton Dependencies
 
 install all python dependencies. on raspi os explicitly use 'python3' & 'pip3' commands to call python. run:
 
 ```
-pip3 install -r requirements.txt
+pip3 install -r scripts/requirements.txt
 ```
 
 ### Set Up the Config.
@@ -136,38 +192,6 @@ export AUTH_TOKEN="YOUR_TOKEN"
 
 or create a .env file inside the CWD. place the ENV Var their. the Config script will automaticly load the token. from
 the config.yaml.
-
-#### Configuration
-
-```
-sudo raspi-config
-```
-
-#### GL Driver
-
-Advanced Options / GL Driver / G2 GL (Fake KMS)
-
-#### Enable the compositor.
-
-Advanced Options / Compositor / Yes
-
-### Chrome
-
-### Plugins 
-Chromium on Raspberry Pi OS comes with uBlock Origin and h264ify extensions installed by default. Make sure that h264ify
-is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi supports hardware-accelerated video decode.
-
-```
-https://www.linuxuprising.com/2021/04/how-to-enable-hardware-acceleration-in.html
-https://medium.com/for-linux-users/how-to-make-your-raspberry-pi-4-faster-with-a-64-bit-kernel-77028c47d653
-```
-
-#### Flags
-
-```
-chrome://flags/#enable-accelerated-video-decode
-chrome://flags/#ignore-gpu-blocklist
-```
 
 ### Autostart
 
