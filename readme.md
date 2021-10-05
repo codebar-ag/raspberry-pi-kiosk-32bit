@@ -15,8 +15,6 @@
 https://downloads.raspberrypi.org/raspios_arm64/images
 ```
 
-**Note:** Do make sure to use arm not armhf imges.
-
 ## SSH-Access
 
 ```
@@ -39,7 +37,7 @@ ssh-keygen -R 192.168.1.2
 ## Settings (manually)
 
 ```
-Ddisable Sleep Mode Dispaly
+Disable Sleep Mode display
 ```
 
 # Firmeware Update
@@ -74,7 +72,7 @@ sudo apt-get install chromium-browser --yes
 
 ```
 
-- Install chromedriver
+## Install chromedriver
 
 Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
 Make sure you downloaded the right os version. To get versions Enter `chromium --product-version`
@@ -121,6 +119,7 @@ sudo raspi-config
 ```
 
 #### Set Video Resolution to 1920x1080/60hz
+
 - Einstellungen/Screen Configuration
 
 #### GL Driver
@@ -132,11 +131,13 @@ Advanced Options / GL Driver / G2 GL (Fake KMS)
 Advanced Options / Compositor / No
 
 ### Check 3D Drivers
+
 ```
 sudo reboot
 cat /proc/device-tree/soc/firmwarekms@7e600000/status
 cat /proc/device-tree/v3dbus/v3d@7ec04000/status
 ```
+
 If both commands return okay, then the hardware acceleration is working and activated.
 
 ### Chrome
@@ -149,6 +150,7 @@ is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi suppo
 ```
 https://www.linuxuprising.com/2021/04/how-to-enable-hardware-acceleration-in.html
 https://medium.com/for-linux-users/how-to-make-your-raspberry-pi-4-faster-with-a-64-bit-kernel-77028c47d653
+https://lemariva.com/blog/2020/08/raspberry-pi-4-video-acceleration-decode-chromium
 ```
 
 #### Enable Flags
