@@ -161,26 +161,38 @@ Helpful sources:<br/>
 
 - disable sleep mode display
 
+## Raspi Config
+
+To open the Raspi configuration enter in Terminal:
+
 ```
 sudo raspi-config
 ```
 
-#### Set Video Resolution to 1920x1080/60hz
+This will open Terminal Settings. <br/><br/>
+Inside Raspi Configuration config following: 
+#### **Set Video Resolution to 1920x1080/60hz**
 
-- Einstellungen/Screen Configuration
+- Einstellungen → Screen Configuration
 
-#### GL Driver
+#### **GL Driver**
 
-Advanced Options / GL Driver / G2 GL (Fake KMS)
+Advanced Options → GL Driver → G2 GL (Fake KMS)
 
-#### Disable the compositor.
+#### **<u>Disable</u> the compositor.**
 
-Advanced Options / Compositor / No
+Advanced Options → Compositor → No
 
-### Check 3D Drivers
+### Reboo and Check 3D Drivers
 
+After making the changes reboot the Pi.
 ```
 sudo reboot
+```
+
+After reboot check if settings took effect.
+
+```
 cat /proc/device-tree/soc/firmwarekms@7e600000/status
 cat /proc/device-tree/v3dbus/v3d@7ec04000/status
 ```
@@ -192,21 +204,27 @@ If both commands return okay, then the hardware acceleration is working and acti
 ### Plugins
 
 Chromium on Raspberry Pi OS comes with uBlock Origin and h264ify extensions installed by default. Make sure that h264ify
-is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi supports hardware-accelerated video decode.
+is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi supports hardware-accelerated video decode.<br/>
+Additional sources: <br/>
+[How to enable hardware acceleration](https://www.linuxuprising.com/2021/04/how-to-enable-hardware-acceleration-in.html) <br/>
+[How to make your raspberry pi 4 faster](https://medium.com/for-linux-users/how-to-make-your-raspberry-pi-4-faster-with-a-64-bit-kernel-77028c47d653) <br/>
+[Raspberry Pi 4 video acceleration decode chromium](https://lemariva.com/blog/2020/08/raspberry-pi-4-video-acceleration-decode-chromium) <br/>
 
-```
-https://www.linuxuprising.com/2021/04/how-to-enable-hardware-acceleration-in.html
-https://medium.com/for-linux-users/how-to-make-your-raspberry-pi-4-faster-with-a-64-bit-kernel-77028c47d653
-https://lemariva.com/blog/2020/08/raspberry-pi-4-video-acceleration-decode-chromium
-```
 
-#### Enable Flags
+### Enable Chrome Flags:
 
-```
-chrome://flags/#ignore-gpu-blocklist
-chrome://flags/#enable-gpu-rasterization
-chrome://flags/#enable-accelerated-video-decode
-```
+To enhance the Chrome browser performance. You have to enable some Chrome-Flags inside the Browser.
+To do that enter following Chrome URLs inside the URL bar and: <br/>
+
+<!-- **Enable:** `chrome://flags/#ignore-gpu-blocklist`<br/> -->
+<!-- **Enable:** `chrome://flags/#enable-gpu-rasterization`<br/> -->
+<!-- **Enable:** `chrome://flags/#enable-accelerated-video-decode`<br/> -->
+**enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
+**enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
+**enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/>
+
+To check the Chrome browser Graphics Feture Status enter: [chrome://gpu](chrome://gpu)<br/>
+*All fetures should show a green status Text (except Vulkan).*
 
 ### Clone Github Repository
 
@@ -215,21 +233,27 @@ Make sure you have a ssh public key and have access to the repository
 ```
 ssh-keygen
 cat ~/.ssh/id_rsa.pub
-
-git clone https://github.com/codebar-ag/raspberry-pi-kiosk-32bit scripts
 ```
-
+Clone this Repo as scripts folder.
+```
+git clone https://github.com/codebar-ag/raspberry-pi-kiosk-32bit scripts 
+```
+then enter the scripts folder.
+```
+cd scripts
+```
+Inside the Repo (scripts folder):
 ### Install Pyhton Dependencies
 
-install all python dependencies. on raspi os explicitly use 'python3' & 'pip3' commands to call python. run:
 
+On raspi os explicitly use '**python3**' & '**pip3**' commands to call python. run:
 ```
-pip3 install -r scripts/requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Set Up the Config.
 
-To use autostart config has to be set up correctly.
+To use autostart config has to be set up correctly.<br/>
 _NOTE! SECRETS SHOULD NOT BE VISIBLE IN GIT AND USED WITH ENV VARS._
 
 Add the enviroment Variable AUTH_TOKEN with the right AuthToken to CWD. In Terminal at (CWD, where the autostart.py is).
