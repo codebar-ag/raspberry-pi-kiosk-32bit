@@ -6,13 +6,13 @@
 - Raspberr Pi Official USB-C Power Supply
 - Raspberry PI 4 Computer, Model B 8GB RAM
 - PureLink CInema Seriers Micro HDMI - HDMI Cable (CS1200-030)
-- M2.SDD via USB-3.0
+- SandDisk Extreme Plus 32GB
 ```
 
 ## Image
 
 ```
-https://downloads.raspberrypi.org/raspios_arm64/images
+https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip
 ```
 
 ## Pi Imager
@@ -46,9 +46,6 @@ ssh pi@raspberrypi.local
 ssh-keygen -R 192.168.1.2
 ```
 
-## Settings (manually)
-
-- disable sleep mode display
 
 # Firmeware Update
 
@@ -82,6 +79,8 @@ sudo apt-get install chromium-browser --yes
 
 ```
 
+
+
 ## Install chromedriver
 
 Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
@@ -92,7 +91,6 @@ after download unzip
 # Driver
 
 ```
-sudo wget https://github.com/electron/electron/releases/download/v12.0.18/chromedriver-v12.0.18-linux-arm64.zip
 sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-ia32.zip
 
 unzip chromedriver-v14.1.0-linux-ia32.zip
@@ -122,7 +120,12 @@ LinkOne(https://tecadmin.net/setup-selenium-with-chromedriver-on-debian/)
 LinkTwo(https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
 _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_
 
-#### Configuration
+### Configuration
+
+#### Sleep Mode (manually)
+
+- disable sleep mode display
+
 
 ```
 sudo raspi-config
