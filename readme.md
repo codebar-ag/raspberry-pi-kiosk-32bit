@@ -110,20 +110,25 @@ sudo apt-get install chromium-browser --yes
 
 ```
 # Driver
-## Install chromedriver
+## Install chromedriver 
 
-Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
-Make sure you downloaded the right os version. To get versions Enter `chromium --product-version`
-or `chromedriver --product-version` or `chromium-browser --product-version`
-after download unzip
+Get Chromedriver from [Electron GitHub releases](https://github.com/electron/electron/releases). Make sure it supports the installed chromium version on your Pie! <br/>  
+Make sure you downloaded the right os version. <br/>*Check the "Other Changes" section on the Version Release Notes for <br/> eg. Updated **Chromium to 94.0.4606.61.** part.* <br/> <br/> 
+To get the needed versions for your chromium-browser installation <br/> 
+<!-- Enter: &nbsp;&nbsp;&nbsp;&nbsp;`chromium --product-version` <br/>  -->
+Enter: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`chromium-browser --product-version` <br/> 
+And: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `chromedriver --product-version` <br/> 
 
+ 
+
+**NOTE:** The 32bit RaspberryOS Image runs the **armv7l** architecture! 
 
 
 ```
 sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-ia32.zip
 unzip chromedriver-v14.1.0-linux-ia32.zip
 ```
-
+after the download unzip the driver.
 Make sure to configure ChromeDriver on your system (move the chromedriver to /usr/lib)
 
 ```
@@ -153,6 +158,7 @@ Helpful sources:<br/>
 [How to run selenium using python](https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
 
 
+
 <!-- _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_ -->
 
 ### Configuration
@@ -161,7 +167,7 @@ Helpful sources:<br/>
 
 - disable sleep mode display
 
-## Raspi Config
+# Raspi Config
 
 To open the Raspi configuration enter in Terminal:
 
@@ -173,7 +179,7 @@ This will open Terminal Settings. <br/><br/>
 Inside Raspi Configuration config following: 
 #### **Set Video Resolution to 1920x1080/60hz**
 
-- Einstellungen → Screen Configuration
+Einstellungen → Screen Configuration
 
 #### **GL Driver**
 
@@ -201,7 +207,7 @@ If both commands return okay, then the hardware acceleration is working and acti
 
 ### Chrome
 
-### Plugins
+##### Plugins
 
 Chromium on Raspberry Pi OS comes with uBlock Origin and h264ify extensions installed by default. Make sure that h264ify
 is enabled, so YouTube uses h264-encoded videos for which the Raspberry Pi supports hardware-accelerated video decode.<br/>
@@ -256,35 +262,75 @@ pip3 install -r requirements.txt
 To use autostart config has to be set up correctly.<br/>
 _NOTE! SECRETS SHOULD NOT BE VISIBLE IN GIT AND USED WITH ENV VARS._
 
-Add the enviroment Variable AUTH_TOKEN with the right AuthToken to CWD. In Terminal at (CWD, where the autostart.py is).
+Add the enviroment Variable AUTH_TOKEN with the right AuthToken to the scripts Current Working Directory (CWD, where the autostart.py is located). <br/> 
 
+There are two Ways:
+
+#### **I.  Make use of the .env File** 
+
+By renaming the provided templatefile **.env.dist** to **.env** or creating your own then edit the .env file.
+Uncomment the `AUTH_TOKEN=""` line and insert your token at the placeholder accordingly. 
+In terminal use:
+
+```bash
+cp .env.dist .env   # rename env file with cp
+nano .env           # edit the .env file 
 ```
-cp .env.dist .env
-export AUTH_TOKEN="YOUR_TOKEN"
+Inside the File:
+```bash
+#MY_ENV_VAR="This is my env var content."
+#SCREENURL_BASE="https://promoscreens.yourdomain.com"
+#AUTH_USER=""
+AUTH_TOKEN="<PLACE YOUR TOKEN HERE>"
 ```
 
-or create a .env file inside the CWD. place the ENV Var their. the Config script will automaticly load the token. from
+The Config script will automaticly load the token and other environment variables from the env. file to
 the config.yaml.
 
-### Autostart
 
+#### **II.  Add the Environment Variables with export** 
+Inside the Scripts CWD run:
+```bash
+export AUTH_TOKEN="<PLACE YOUR TOKEN HERE>" # add environment variable to CWD
 ```
+### Python Autostart Script
+
+To start the autostart python script automaticly after every boot add it to the Pi´s boot scripts at lxsession.
+
+```bash
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```
 
-*WARNING*: The (CWD) Current Working Director the autostart directory!
-Change on Directory up to autostart
+*WARNING*: The Current Working Director of the script is the autostart directory!
+Change one directory up to autostart folder.
 
 ```
-cd /home/pi/Scripts/autostart/
+cd /home/pi/Scripts/autostart
 ```
 
-then run with python3
+then run with **python3**
 
-```
+```python
 python3 autostary.py
 ```
 
-- autostart will open the chromium in Fullscreen kioskmode.
 
-_TIPP: To exit the kioskmode close it with ALT+F4_
+autostart will open the chromium in Fullscreen kioskmode.
+
+_Note: To exit the kioskmode close it with ALT+F4_
+<br/> <br/> <br/> 
+
+
+## Common Exceptions:
+
+If you run the python script and receive:<br/> <br/> 
+**OSErrors:**
+```python
+OSError: [Errno 8] Exec format error: 'chromedriver'
+```
+run: ```which chromedriver``` If this returns
+```
+bash: /usr/bin/chromedriver: cannot execute binary file: Exec format error
+```
+This means you possibly installed a false chromedriver architecture binary. eg. ia32 instead of needed armv7l.
+Delete the chromedriver binary and dowload the right armv7l binary version.
