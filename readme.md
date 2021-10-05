@@ -282,7 +282,7 @@ Add the enviroment Variable AUTH_TOKEN with the right AuthToken to the scripts C
 There are two Ways:
 
 #### **I.  Make use of the .env File** 
-
+! ADD SCREENURL_BASE env too!
 By renaming the provided templatefile **.env.dist** to **.env** or creating your own then edit the .env file.
 Uncomment the `AUTH_TOKEN=""` line and insert your token at the placeholder accordingly. 
 In terminal use:
@@ -294,7 +294,7 @@ nano .env           # edit the .env file
 Inside the File:
 ```bash
 #MY_ENV_VAR="This is my env var content."
-#SCREENURL_BASE="https://promoscreens.yourdomain.com"
+SCREENURL_BASE="https://promoscreens.yourdomain.com"
 #AUTH_USER=""
 AUTH_TOKEN="<PLACE YOUR TOKEN HERE>"
 ```
