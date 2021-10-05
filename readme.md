@@ -48,9 +48,7 @@ ssh-keygen -R 192.168.1.2
 
 ## Settings (manually)
 
-```
-Disable Sleep Mode display
-```
+- disable sleep mode display
 
 # Firmeware Update
 
