@@ -15,6 +15,18 @@
 https://downloads.raspberrypi.org/raspios_arm64/images
 ```
 
+## Pi Imager
+
+- Install Raspberry Pi OS using Raspberry Pi Imager
+
+```
+https://www.raspberrypi.org/software/
+```
+
+## Device config.txt
+
+- Replace the device config.txt
+
 ## SSH-Access
 
 ```
@@ -185,7 +197,7 @@ pip3 install -r scripts/requirements.txt
 To use autostart config has to be set up correctly.
 _NOTE! SECRETS SHOULD NOT BE VISIBLE IN GIT AND USED WITH ENV VARS._
 
-Add the Enviroment Variable AUTH_TOKEN with the right AuthToken to CWD. In Terminal at (CWD, where the autostart.py is).
+Add the enviroment Variable AUTH_TOKEN with the right AuthToken to CWD. In Terminal at (CWD, where the autostart.py is).
 
 ```
 cp .env.dist .env
