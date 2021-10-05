@@ -6,10 +6,8 @@ for the Raspberry Pi & Raspberry Pi OS
 
 """
 
-
 import psutil
 import subprocess
-
 
 def get_mac(interface='eth0'):
   """
@@ -30,7 +28,6 @@ def get_mac(interface='eth0'):
     return '00:00:00:00:00:00'
 
 
-
 def get_temperature():
   """get the temperatur of Raspberry pi 
 
@@ -48,4 +45,3 @@ def get_temperature():
   except Exception:
     print(f'ERROR READING PIE TEMPERATURE VIA vcgencmd')
     return None
-

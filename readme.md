@@ -10,13 +10,11 @@
 ```
 
 ## Image
-
 ```
 https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip
 ```
 
 ## Pi Imager
-
 - Install Raspberry Pi OS using Raspberry Pi Imager
 
 ```
@@ -45,7 +43,6 @@ ssh pi@raspberrypi.local
 ```
 ssh-keygen -R 192.168.1.2
 ```
-
 
 # Firmeware Update
 
@@ -79,8 +76,6 @@ sudo apt-get install chromium-browser --yes
 
 ```
 
-
-
 ## Install chromedriver
 
 Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
@@ -92,7 +87,6 @@ after download unzip
 
 ```
 sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-ia32.zip
-
 unzip chromedriver-v14.1.0-linux-ia32.zip
 ```
 
@@ -125,7 +119,6 @@ _This could need a bit more improvment, if you run in to problems -> @TrevisGord
 #### Sleep Mode (manually)
 
 - disable sleep mode display
-
 
 ```
 sudo raspi-config

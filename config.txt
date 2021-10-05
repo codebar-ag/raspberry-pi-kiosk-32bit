@@ -58,12 +58,11 @@ max_framebuffers=2
 #dtoverlay=gpio-ir-tx,gpio_pin=18
 
 # Additional overlays and parameters are documented /boot/overlays/README
+# Enable DRM VC4 V3D driver
+dtoverlay=vc4-fkms-v3d
 
 # Disblae audio (loads snd_bcm2835)
 dtparam=audio=off
-
-# Enable DRM VC4 V3D driver
-dtoverlay=vc4-fkms-v3d
 
 # disable wifi
 dtoverlay=disable-wifi
