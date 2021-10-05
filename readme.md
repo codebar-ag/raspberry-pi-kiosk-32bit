@@ -10,47 +10,79 @@
 ```
 
 ## Image
+For the stable raspios 32bit (armhf) image go to [raspberrypi.org ](https://downloads.raspberrypi.org)  and Download the newest version of the **raspios_armhf** image.
+
 ```
 https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip
 ```
+*(Instructions Tested under version: raspios_armhf-2021-05-28)*
+
+Unpack the File and continue with the unpacked "2021-05-07-raspios-buster-armhf.img" image.
 
 ## Pi Imager
-- Install Raspberry Pi OS using Raspberry Pi Imager
 
-```
-https://www.raspberrypi.org/software/
-```
+Install Raspberry Pi OS by Flash the downloaded image onto an clean microSD card.
+Use flashing software like: Raspberry Pi Imager or balenaEtcher
+
+- [Raspberry Pi Imager](https://www.raspberrypi.org/software/)
+- [balenaEtcher](https://www.balena.io/etcher/)
+
+<br/>
+
+
+
+# Image Setup
+
+For setting up the Device, open the just flashed microSD card drive now *showing as "boot" drive*. 
+Befor removing the sd and the first boot the image needs the following steps.
 
 ## Device config.txt
 
-- Replace the device config.txt
+Inside the boot folder directory find **config.txt** and replace the file with the [config.txt](config.txt) from this repo. 
 
-## SSH-Access
+*(**Note**: Currently, the device setup is intended for wired LAN connections. The config disables: wifi, bluetooth and sound on the device.)*
+## Setup SSH-Access
 
+For headless setup, SSH can be enabled by placing a file named ssh, without any extension, onto the boot partition of the SD card. This will activate SSH on the Pi.
+
+**host** => raspberrypi.local <br/>
+**username** => pi <br/>
+**paswword** => raspberry <br/>
+
+Connect via ssh terminal:
 ```
-Add an empty ssh file within the boot folder of the image.
-
-host => raspberrypi.local
-username => pi
-paswword => raspberry
-
 ssh pi@raspberrypi.local
-
 ```
 
-### Remove local cached fingerpint for IP on your device
+#### **Removing local cached fingerpint for IP on your device**
+In case you already used the raspberrypi device with an SSH conection to the pies IP before, 
+you may get an SSH Key Error. Resolve this error by removeing the cached fingerprint on your machine.
 
 ```
-ssh-keygen -R 192.168.1.2
+ssh-keygen -R 192.168.1.2  #Local IP of your Raspberry-Pi.
 ```
 
-# Firmeware Update
+
+# Device Setup
+
+Finally remove the flashed & configered microSD card from your machine and insert it into the Raspberry-Pi. 
+Following Steps take place on the Raspberry-Pi device.
+
+When using the setup with gui:
+
+On first boot follow the gui SetUp guide.
+- Set password for user on raspberry-pi.
+<!-- - Set up WIFI.  -->
+
+## Firmeware Update
+Befor starting, install Update the Pies dependencies and packages.
 
 ```
 sudo apt-get update
 sudo apt-get upgrade -y
 sudo apt-get update
-
+```
+```
 sudo rpi-eeprom-update
 sudo rpi-eeprom-update -a
 ```
@@ -61,21 +93,23 @@ sudo rpi-eeprom-update -a
 
 #### Install Chromedriver and Selenium
 
-#### Pre Updates
+#### Pre Install needed packages.
 
+To run and install all Divers install needed dependencies on to the Pi.
 ```
 sudo apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
 sudo apt-get install libgles2-mesa libgles2-mesa-dev xorg-dev
 
 ```
 
-#### Pre Updates
+#### Pre Updates / Install chromium-browser
 
+Install or Updates the chromium-browser.
 ```
 sudo apt-get install chromium-browser --yes
 
 ```
-
+# Driver
 ## Install chromedriver
 
 Get Chromedriver from electron GitHub release. Make sure it supports the installed chromium version on your Pie!
@@ -83,7 +117,7 @@ Make sure you downloaded the right os version. To get versions Enter `chromium -
 or `chromedriver --product-version` or `chromium-browser --product-version`
 after download unzip
 
-# Driver
+
 
 ```
 sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-ia32.zip
@@ -96,12 +130,17 @@ Make sure to configure ChromeDriver on your system (move the chromedriver to /us
 sudo mv chromedriver /usr/bin/chromedriver
 sudo chown root:root /usr/bin/chromedriver
 sudo chmod +x /usr/bin/chromedriver
-
+```
+After configureing the driver reboot the Pi.
+```
 sudo reboot
-
 ```
 
-After this everything should be set up. In case you installed the wrong version of chromedriver. removing chrome driver:
+
+After this everything should be set up. 
+
+### Removing wrong chromedriver version
+**ONLY** In case you installed the wrong version of chromedriver. <br/>removing chrome driver:
 
 ```
 sudo rm -f /usr/bin/chromedriver 
@@ -109,10 +148,12 @@ sudo rm -f /usr/local/bin/chromedriver
 sudo rm -f /usr/local/share/chromedriver
 ``` 
 
-helpful sources:
-LinkOne(https://tecadmin.net/setup-selenium-with-chromedriver-on-debian/)
-LinkTwo(https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
-_This could need a bit more improvment, if you run in to problems -> @TrevisGordan_
+Helpful sources:<br/>
+[Setup selenium with chromedriver](https://tecadmin.net/setup-selenium-with-chromedriver-on-debian/) <br/>
+[How to run selenium using python](https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
+
+
+<!-- _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_ -->
 
 ### Configuration
 
