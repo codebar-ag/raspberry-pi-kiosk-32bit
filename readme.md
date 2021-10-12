@@ -43,7 +43,8 @@ Use flashing software like: Raspberry Pi Imager or balenaEtcher
 # Image Setup
 
 For setting up the Device, open the just flashed microSD card drive now *showing as "boot" drive*. 
-Befor removing the sd and the first boot the image needs the following steps.
+Befor removing the sd and the first boot the image needs the following steps. <br/>
+*If the image/drive is not or not showing as boot, manuell remove the drive and reinsert it into the you card reader.*
 
 ## Device config.txt
 
@@ -178,9 +179,10 @@ To do that enter following Chrome URLs inside the URL bar and: <br/>
 <!-- **Enable:** `chrome://flags/#ignore-gpu-blocklist`<br/> -->
 <!-- **Enable:** `chrome://flags/#enable-gpu-rasterization`<br/> -->
 <!-- **Enable:** `chrome://flags/#enable-accelerated-video-decode`<br/> -->
-**enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
-**enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
-**enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/>
+**Enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
+**Enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
+If Available: <br/>
+**Enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/>
 
 To check the Chrome browser Graphics Feture Status enter: [chrome://gpu](chrome://gpu)<br/>
 *All fetures should show a green status Text (except Vulkan).*
