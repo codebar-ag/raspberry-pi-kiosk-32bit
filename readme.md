@@ -112,8 +112,27 @@ sudo apt-get install libgles2-mesa libgles2-mesa-dev xorg-dev
 
 ```
 # Browser
+
+The 32bit version of the RaspiOs, comes with the correct chromium-browser already installed.
+If you followed the instructions above correctly, you should also have the correct version.
+To confirm that, <br/>
+Enter: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`chromium-browser --product-version` <br/> 
+
 # Driver
 <!-- _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_ -->
+When using the 32bit version of RaspiOs you will need to install chrome driver via chromium-chromedriver.
+Install the regular chromedriver by:
+
+```
+sudo apt-get install chromium-chromedriver
+```
+
+To confirm installation was correct, and see if chromedriver matches your chromium-browser <br/> 
+<!-- Enter: &nbsp;&nbsp;&nbsp;&nbsp;`chromium --product-version` <br/>  -->
+Enter: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`chromium-browser --product-version` <br/> 
+And: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `chromedriver --product-version` <br/> 
+
+Both Versions should match.
 
 ### Configuration
 
