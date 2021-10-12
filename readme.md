@@ -303,7 +303,7 @@ _Note: To exit the kioskmode close it with ALT+F4_
 ## Common Exceptions:
 Common Exceptions on running the python script.
 
-### Wrong Driver Version
+### Wrong Driver Version (64bit Image)
 If you run the python script and receive:<br/> <br/> 
 **Errors:**
 ```python
@@ -313,7 +313,7 @@ Current browser version is 88.0.4324.187 with binary path /usr/bin/chromium-brow
 This means: Your Browser and Driver versions are different and do not match.
 in this example the ChromeDriver only supports Chrome-Browser version 93. And you have version 88 Installed.
 
-### Wrong Driver Binary
+### Wrong Driver Binary (64bit Image)
 If you run the python script and receive:<br/> <br/> 
 **OSErrors:**
 ```python
