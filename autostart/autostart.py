@@ -45,11 +45,15 @@ def identification_request(device):
 
     print(f'Homecall device temperatur: {device.temperature()}')
     print(f'Homecall device macadress: {device.mac_address()}')    
-    # print(f"Homecall -> SERVERAUTH: {serverauth}")
+    print(f"Homecall -> SERVERAUTH: user: {serverauth[0]} token(first10): {serverauth[1][:10]}")
 
     response = requests.post(identification_url, json=post_data, headers=headers, auth=serverauth)
 
     status_code = response.status_code
+    
+    print(f"DEBUG: -> RESPONSE CODE: {status_code}")
+    if status_code != 200:
+        print(f"DEBUG: -> RESPONSE text: {response.text}")
     
     try:
         resposne_url = response.json().get('url') # Target Display URL
@@ -62,6 +66,7 @@ def identification_request(device):
     print(f"Homecall answer: STATUS CODE: {status_code} URL: {resposne_url}")
     
     return status_code, resposne_url 
+
 
 
 def event_loop(kiosk_browser, device):
