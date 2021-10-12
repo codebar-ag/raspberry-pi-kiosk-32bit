@@ -118,7 +118,7 @@ To install the browser, you need to run the following command on your Raspberry 
 ```
 sudo apt-get install chromium-browser --yes
 ```
-The Raspberry Pi 4 need a special optimization version of chromium-browser due to its hardware.
+The Raspberry Pi 4 running 64bit architecture needs a special optimization version of chromium-browser due to its hardware.
 This will install the version of the web browser that is provided from the Raspberry Pi OS repository.
 This build of Chromium has special optimizations for the Raspberry Pi compiled into it.
 The Driver is rarely updated since it is not maintained by chromium project.
@@ -135,7 +135,7 @@ https://github.com/electron/electron/releases/tag/v14.0.0 (Chromium 93.0.4577.58
 https://github.com/electron/electron/releases/tag/v13.0.0 (Chromium 91.0.4472.69) -->
 # Driver
 ## Install chromedriver 
-
+The Raspberry Pi 4 running 64bit architecture needs a special optimization version of ChromeDriver.
 Get Chromedriver from [Electron GitHub releases](https://github.com/electron/electron/releases). Make sure it supports the installed chromium version on your Pie! <br/>  
 Make sure you downloaded the right os version. <br/>*Check the "Other Changes" or "Stack Upgrades" section on the Version Release Notes for <br/> eg. Updated **Chromium to 94.0.4606.61.** part.* <br/> <br/> 
 To get the needed versions for your chromium-browser installation <br/> 
