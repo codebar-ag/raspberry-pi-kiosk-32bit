@@ -1,3 +1,12 @@
+# Promoscreens Backend Setup
+
+Set up the Promoscreen by logging in to the backend with your credentials. *(?Source of credentials?)*<br/>
+Login: [Promoscreens Backend](https://promoscreens-stage.sonepar.ch/auth/login)<br/>
+
+*? Create a User and get the Username/Mail and API TOKEN. ?* <br/>
+
+*? Other steps to do ?*
+
 # Setup Raspberry Pi
 
 ## Hardware
@@ -284,7 +293,10 @@ There are two Ways:
 #### **I.  Make use of the .env File** 
 ! ADD SCREENURL_BASE env too!
 By renaming the provided templatefile **.env.dist** to **.env** or creating your own then edit the .env file.
-Uncomment the `AUTH_TOKEN=""` line and insert your token at the placeholder accordingly. 
+Uncomment the `AUTH_TOKEN=""`, `AUTH_USER=""` lines and insert your credentials at the placeholder accordingly. 
+Make sure to set your correct base url in `SCREENURL_BASE=""`.  <br/>
+Note: Only set the base url without paths - especially **dont** use any '/api/identification' path.
+<br/> For more information about the AUTH Process with the Promoscreens Backend see the [API Dokumentation](https://documenter.getpostman.com/view/1711474/TzY3AaiV) <br/>  
 In terminal use:
 
 ```bash
@@ -294,8 +306,8 @@ nano .env           # edit the .env file
 Inside the File:
 ```bash
 #MY_ENV_VAR="This is my env var content."
-SCREENURL_BASE="https://promoscreens.yourdomain.com"
-#AUTH_USER=""
+SCREENURL_BASE="< PLACE BASE URL eg. https://promoscreens.yourdomain.com >"
+AUTH_USER="<PLACE YOUR USER EMAIL HERE>"
 AUTH_TOKEN="<PLACE YOUR TOKEN HERE>"
 ```
 
@@ -306,6 +318,8 @@ the config.yaml.
 #### **II.  Add the Environment Variables with export** 
 Inside the Scripts CWD run:
 ```bash
+export SCREENURL_BASE="< PLACE BASE URL >"
+export AUTH_USER="<PLACE YOUR USER EMAIL HERE>"
 export AUTH_TOKEN="<PLACE YOUR TOKEN HERE>" # add environment variable to CWD
 ```
 ### Python Autostart Script
