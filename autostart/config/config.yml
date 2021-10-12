@@ -1,6 +1,6 @@
 
 screenurls:
-  base: ${SCREENURLS_BASE}
+  base: ${SCREENURL_BASE}
   identification: /api/identification
   browser_start_url: offlinefallback/index.html
   browser_start_url_is_internal: 1      #* set to True/1 if config browser_start_url is rel. intern. path
