@@ -18,6 +18,8 @@ Login: [Promoscreens Backend](https://promoscreens-stage.sonepar.ch/auth/login)<
 - SandDisk Extreme Plus 32GB
 ```
 
+Note: Make sure the Micro HDMI cable is conected to the **HDMI0** Port on the Raspberr Pi. (HDMI0 PORT is next to the usbc power supply port. Do **NOT** use HDMI1 port)
+
 ## Image
 For the stable raspios 32bit (armhf) image go to [raspberrypi.org ](https://downloads.raspberrypi.org)  and Download the newest version of the **raspios_armhf** image.
 
