@@ -256,10 +256,10 @@ pip3 install -r requirements.txt
 
 ### **Autostart Config Set Up.**
 
-
 _**NOTE:** SECRETS SHOULD NOT BE VISIBLE IN GIT AND USED WITH ENV VARS._
-<br/>
+<br/><br/>
 To run the autostart script, the config has to be set up correctly.<br/> 
+
 To establish a connection and AUTH to your server the script needs, a base URL of your backend endpoint, and to authenticate to the endpoint, a Username(email) and Token has to be provided.<br/> 
 The scripts config looks for the corresponding environment variables AUTH_TOKEN, AUTH_USER and SCREENURL_BASE inside the script's Current Working Directory (CWD, where the autostart.py is located). <br/> 
 
