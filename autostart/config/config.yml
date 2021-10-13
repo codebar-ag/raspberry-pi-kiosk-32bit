@@ -12,6 +12,6 @@ auth: #! WARNING ! SECRETS SHOULD BE NOT VISIBILE IN GIT AND USED WITH ENV VARS.
 
 homecall_period: 60 # Seconds beetween every homecall
 
-# export SCREENURLS_BASE=""
+# export SCREENURL_BASE=""
 # export AUTH_USER=""
 # export AUTH_TOKEN=""
