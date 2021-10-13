@@ -114,14 +114,9 @@ sudo rpi-eeprom-update -a
 ```
 
 # Browser Installation & Setup
+#### Prerequisites
 
-### Prerequisites
-
-#### Install Chromedriver and Selenium
-
-#### Pre Install needed packages.
-
-Before setting up the Browser and Chromedriver, install needed Graphic Drivers and dependencies in advance.
+Before setting up the Browser and Chromedriver, install required Graphic Drivers and dependencies in advance.
 ```
 sudo apt-get install -y curl unzip xvfb libxi6 libgconf-2-4
 sudo apt-get install libgles2-mesa libgles2-mesa-dev xorg-dev
