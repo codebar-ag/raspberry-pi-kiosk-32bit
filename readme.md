@@ -303,11 +303,13 @@ This will be overwritten/deleted on every boot of the Raspberry-Pi.
 
 The [config.yaml](autostart/config/config.yaml) provides a way to manually set and configure different options*** <br/>
 <!-- ### **Screenurls & Endpoints** -->
-### config stuff 
-| **Screenurls  & Endpoints** | |
+### Config.yaml File Settings
+| **Config File Settings** | |
 | --- | --- |
+| **Screenurls  & Endpoints** | |
 | *place underneath `screenurls:`* |
-| Option | Description |
+| |
+| **Option** | **Description** |
 | `base` | sets the base URL to your backend *(Default: this is set via environmental variables and env file)*  |
 | `identification` | the relative URL path to the backend's API identification endpoint.  |
 | `browser_start_url` | The URL to the first page the Kiosk Browser loads on opening, before any request to the backend was made. *(Default: Internal-Offline-Fallbackpage)*  |
@@ -316,12 +318,14 @@ The [config.yaml](autostart/config/config.yaml) provides a way to manually set a
 | |
 | **Server Auth** | |
 | *place underneath `auth:`* |
-| Option | Description |
+| |
+| **Option** | **Description** |
 | `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 | `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 | |
 | **Other Options** | |
-| Option | Description |
+| |
+| **Option** | **Description** |
 | `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 | `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 
