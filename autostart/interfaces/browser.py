@@ -61,6 +61,7 @@ class Browser():
             return True
 
 
+
     def _start_kiosk(self):
         """ Start the Kiosk 
         (Start Chrome Driver in kiosk mode)
@@ -71,13 +72,18 @@ class Browser():
 
         chrome_options = Options()
         #chrome_options.add_argument("--noerrdialogs")
-        chrome_options.add_argument("--kiosk --no-first-run --noerrdialogs --disable-infobars")
-
+        #chrome_options.add_argument("--kiosk --no-first-run --noerrdialogs --disable-infobars")
+        #  single arguments worked on the 32bit version. 
+        chrome_options.add_argument("--kiosk")
+        chrome_options.add_argument("--no-first-run")
+        chrome_options.add_argument("--noerrdialogs")
+        chrome_options.add_argument("--disable-infobars")
         #removes automation notice on window
         chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
-        self.driver = webdriver.Chrome(chrome_options=chrome_options)
+        self.driver = webdriver.Chrome(options=chrome_options) #! Note: Use options instead of chrome_options <- Deprecated
         self.driver.get(self.on_start_url)
         self.state_open = True
+
 
 
     @staticmethod

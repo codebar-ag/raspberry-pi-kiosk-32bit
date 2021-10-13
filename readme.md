@@ -1,3 +1,12 @@
+# Promoscreens Backend Setup
+
+Set up the Promoscreen by logging in to the backend with your credentials. *(?Source of credentials?)*<br/>
+Login: [Promoscreens Backend](https://promoscreens-stage.sonepar.ch/auth/login)<br/>
+
+*? Create a User and get the Username/Mail and API TOKEN. ?* <br/>
+
+*? Other steps to do ?*
+
 # Setup Raspberry Pi
 
 ## Hardware
@@ -34,7 +43,8 @@ Use flashing software like: Raspberry Pi Imager or balenaEtcher
 # Image Setup
 
 For setting up the Device, open the just flashed microSD card drive now *showing as "boot" drive*. 
-Befor removing the sd and the first boot the image needs the following steps.
+Befor removing the sd and the first boot the image needs the following steps. <br/>
+*If the image/drive is not or not showing as boot, manuell remove the drive and reinsert it into the you card reader.*
 
 ## Device config.txt
 
@@ -102,79 +112,27 @@ sudo apt-get install libgles2-mesa libgles2-mesa-dev xorg-dev
 
 ```
 # Browser
-#### Pre Updates / Install chromium-browser
 
-Install or Updates the chromium-browser.
-To install the browser, you need to run the following command on your Raspberry Pi.
-```
-sudo apt-get install chromium-browser --yes
-```
-The Raspberry Pi 4 need a special optimization version of chromium-browser due to its hardware.
-This will install the version of the web browser that is provided from the Raspberry Pi OS repository.
-This build of Chromium has special optimizations for the Raspberry Pi compiled into it.
-The Driver is rarely updated since it is not maintained by chromium project.
+The 32bit version of the RaspiOs, comes with the correct chromium-browser already installed.
+If you followed the instructions above correctly, you should also have the correct version.
+To confirm that, <br/>
+Enter: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`chromium-browser --product-version` <br/> 
 
-<!-- Current version of chromium-browser is: 92.0.4515.98 -->
-
-<!-- | Chromium-Browser  | chromedriver |
-| ------------- | ------------- |
-| 92.0.4515.98  | [v14.0.0](https://github.com/electron/electron/releases/tag/v14.0.0) |
-| Content Cell  | Content Cell  |
-https://github.com/electron/electron/releases/tag/v13.1.8 (Updated Chromium to 91.0.4472.164. #30169)
-https://github.com/electron/electron/releases/tag/v14.0.0-beta.18 (Updated Chromium to 93.0.4577.15. #30029)
-https://github.com/electron/electron/releases/tag/v14.0.0 (Chromium 93.0.4577.58.)
-https://github.com/electron/electron/releases/tag/v13.0.0 (Chromium 91.0.4472.69) -->
 # Driver
-## Install chromedriver 
+<!-- _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_ -->
+When using the 32bit version of RaspiOs you will need to install chrome driver via chromium-chromedriver.
+Install the regular chromedriver by:
 
-Get Chromedriver from [Electron GitHub releases](https://github.com/electron/electron/releases). Make sure it supports the installed chromium version on your Pie! <br/>  
-Make sure you downloaded the right os version. <br/>*Check the "Other Changes" or "Stack Upgrades" section on the Version Release Notes for <br/> eg. Updated **Chromium to 94.0.4606.61.** part.* <br/> <br/> 
-To get the needed versions for your chromium-browser installation <br/> 
+```
+sudo apt-get install chromium-chromedriver
+```
+
+To confirm installation was correct, and see if chromedriver matches your chromium-browser <br/> 
 <!-- Enter: &nbsp;&nbsp;&nbsp;&nbsp;`chromium --product-version` <br/>  -->
 Enter: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`chromium-browser --product-version` <br/> 
 And: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `chromedriver --product-version` <br/> 
 
- 
-
-**NOTE:** The 32bit RaspberryOS Image runs the **armv7l** architecture! <br/> 
-→ You need need the "chromedriver-_VERSION_-linux-**armv7l**.zip" version file.
-
-```
-sudo wget https://github.com/electron/electron/releases/download/v14.1.0/chromedriver-v14.1.0-linux-armv7l.zip
-unzip chromedriver-v14.1.0-linux-armv7l.zip
-```
-after the download unzip the driver.
-Make sure to configure ChromeDriver on your system (move the chromedriver to /usr/lib)
-
-```
-sudo mv chromedriver /usr/bin/chromedriver
-sudo chown root:root /usr/bin/chromedriver
-sudo chmod +x /usr/bin/chromedriver
-```
-After configureing the driver reboot the Pi.
-```
-sudo reboot
-```
-
-
-After this everything should be set up. 
-
-### Removing wrong chromedriver version
-**ONLY** In case you installed the wrong version of chromedriver. <br/>removing chrome driver:
-
-```
-sudo rm -f /usr/bin/chromedriver 
-sudo rm -f /usr/local/bin/chromedriver 
-sudo rm -f /usr/local/share/chromedriver
-``` 
-
-Helpful sources:<br/>
-[Setup selenium with chromedriver](https://tecadmin.net/setup-selenium-with-chromedriver-on-debian/) <br/>
-[How to run selenium using python](https://patrikmojzis.medium.com/how-to-run-selenium-using-python-on-raspberry-pi-d3fe058f011)
-
-
-
-<!-- _This could need a bit more improvment, if you run in to problems -> @TrevisGordan_ -->
+Both Versions should match.
 
 ### Configuration
 
@@ -240,9 +198,10 @@ To do that enter following Chrome URLs inside the URL bar and: <br/>
 <!-- **Enable:** `chrome://flags/#ignore-gpu-blocklist`<br/> -->
 <!-- **Enable:** `chrome://flags/#enable-gpu-rasterization`<br/> -->
 <!-- **Enable:** `chrome://flags/#enable-accelerated-video-decode`<br/> -->
-**enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
-**enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
-**enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/>
+**Enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
+**Enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
+If Available: <br/>
+**Enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/>
 
 To check the Chrome browser Graphics Feture Status enter: [chrome://gpu](chrome://gpu)<br/>
 *All fetures should show a green status Text (except Vulkan).*
@@ -284,7 +243,10 @@ There are two Ways:
 #### **I.  Make use of the .env File** 
 ! ADD SCREENURL_BASE env too!
 By renaming the provided templatefile **.env.dist** to **.env** or creating your own then edit the .env file.
-Uncomment the `AUTH_TOKEN=""` line and insert your token at the placeholder accordingly. 
+Uncomment the `AUTH_TOKEN=""`, `AUTH_USER=""` lines and insert your credentials at the placeholder accordingly. 
+Make sure to set your correct base url in `SCREENURL_BASE=""`.  <br/>
+Note: Only set the base url without paths - especially **dont** use any '/api/identification' path.
+<br/> For more information about the AUTH Process with the Promoscreens Backend see the [API Dokumentation](https://documenter.getpostman.com/view/1711474/TzY3AaiV) <br/>  
 In terminal use:
 
 ```bash
@@ -294,8 +256,8 @@ nano .env           # edit the .env file
 Inside the File:
 ```bash
 #MY_ENV_VAR="This is my env var content."
-SCREENURL_BASE="https://promoscreens.yourdomain.com"
-#AUTH_USER=""
+SCREENURL_BASE="< PLACE BASE URL eg. https://promoscreens.yourdomain.com >"
+AUTH_USER="<PLACE YOUR USER EMAIL HERE>"
 AUTH_TOKEN="<PLACE YOUR TOKEN HERE>"
 ```
 
@@ -306,6 +268,8 @@ the config.yaml.
 #### **II.  Add the Environment Variables with export** 
 Inside the Scripts CWD run:
 ```bash
+export SCREENURL_BASE="< PLACE BASE URL >"
+export AUTH_USER="<PLACE YOUR USER EMAIL HERE>"
 export AUTH_TOKEN="<PLACE YOUR TOKEN HERE>" # add environment variable to CWD
 ```
 ### Python Autostart Script
@@ -339,7 +303,7 @@ _Note: To exit the kioskmode close it with ALT+F4_
 ## Common Exceptions:
 Common Exceptions on running the python script.
 
-### Wrong Driver Version
+### Wrong Driver Version (64bit Image)
 If you run the python script and receive:<br/> <br/> 
 **Errors:**
 ```python
@@ -349,7 +313,7 @@ Current browser version is 88.0.4324.187 with binary path /usr/bin/chromium-brow
 This means: Your Browser and Driver versions are different and do not match.
 in this example the ChromeDriver only supports Chrome-Browser version 93. And you have version 88 Installed.
 
-### Wrong Driver Binary
+### Wrong Driver Binary (64bit Image)
 If you run the python script and receive:<br/> <br/> 
 **OSErrors:**
 ```python
