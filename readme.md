@@ -145,24 +145,28 @@ And: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `chromedriver --product-ve
 Both Versions should match.
 
 # Raspi Config Configuration
- 
 
-To open the Raspi configuration enter in Terminal:
+To open the Raspberry-Pi's Command line Settings enter in Terminal:
 
 ```
 sudo raspi-config
 ```
 
-This will open the Raspberry-Pi's Command line Settings. <br/><br/>
 Inside Raspi Configuration config set following: 
 
-#### **Disable sleep mode of display**
+| Configuration | Set |
+| :---       |  :---          | 
+| Disable sleep mode of Display   | Display Options → D4 Screen Blanking → No.     |
+| Video Resolution to 1920x1080/60hz   | Display Options → 1920x1080/60hz. <br/> *(Or use GUI: Einstellungen → Screen Configuration)*    |
+| GL Driver  | Advanced Options → GL Driver → G2 GL (Fake KMS)     |
+| <u>Disable</u> the compositor.   | Advanced Options → Compositor → No     |
+<!-- #### **Disable sleep mode of display**
 
 &nbsp;&nbsp;&nbsp; Display Options → D4 Screen Blanking → No.
 #### **Set Video Resolution to 1920x1080/60hz**
 
 &nbsp;&nbsp;&nbsp; Display Options → 1920x1080/60hz.<br/>
-*(Or use GUI: Einstellungen → Screen Configuration)*
+&nbsp;&nbsp;&nbsp;*(Or use GUI: Einstellungen → Screen Configuration)*
 
 #### **GL Driver**
 
@@ -170,7 +174,7 @@ Inside Raspi Configuration config set following:
 
 #### **<u>Disable</u> the compositor.**
 
-&nbsp;&nbsp;&nbsp; Advanced Options → Compositor → No
+&nbsp;&nbsp;&nbsp; Advanced Options → Compositor → No -->
 
 ### Reboo and Check 3D Drivers
 
@@ -190,8 +194,8 @@ cat /proc/device-tree/v3dbus/v3d@7ec04000/status
 <!-- If both commands return okay, then the hardware acceleration is working and activated. -->
 <!-- #! Well die hardware acceleration läuft aktuell ja sowieso nicht daher einfach schauen ob die anderen driver laufen. -->
 If both commands return 'okay', then the Graphic drivers are correctly installed and activated.
-
-### Chrome
+<br/><br/>
+## Chrome
 ##### Additonal Plugins
 
 *Currently, for the Raspberry-Pi with 32bit architecture are no recommended Plugins for further Performance Improvements*
@@ -210,11 +214,9 @@ Additional sources: <br/>
 To enhance the Chrome browser performance. You have to enable some Chrome-Flags inside the Browser.
 To do that enter following Chrome URLs inside the URL bar and: <br/>
 
-<!-- **Enable:** `chrome://flags/#ignore-gpu-blocklist`<br/> -->
-<!-- **Enable:** `chrome://flags/#enable-gpu-rasterization`<br/> -->
-<!-- **Enable:** `chrome://flags/#enable-accelerated-video-decode`<br/> -->
-**Enable:** [chrome://flags/#ignore-gpu-blocklist](chrome://flags/#ignore-gpu-blocklist) <br/>
-**Enable:** [chrome://flags/#enable-gpu-rasterization](chrome://flags/#enable-gpu-rasterization) <br/>
+**Enable:** `chrome://flags/#enable-gpu-rasterization` <br/>
+**Enable:** `chrome://flags/#enable-gpu-rasterization` <br/>
+
 <!-- If Available: <br/> -->
 <!-- **Enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/> -->
 
