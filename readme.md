@@ -292,7 +292,7 @@ AUTH_TOKEN="<PLACE YOUR TOKEN HERE>"
 The Config script will automatically load the token and other environment variables from the env. file to the config.yaml. <br/>
 
 
-#### **II.  Add the Environment Variables with export** 
+#### **II. Or temporarily set the Environment Variables using export** 
 Inside the Scripts CWD run:
 ```bash
 export SCREENURL_BASE="< PLACE BASE URL >"
@@ -307,7 +307,7 @@ The [config.yaml](autostart/config/config.yaml) provides a way to manually set a
 | **Config File Settings** | |
 | --- | --- |
 | **Screenurls  & Endpoints** | |
-| *place underneath `screenurls:`* |
+| *placed underneath `screenurls:`* |
 | |
 | **Option** | **Description** |
 | `base` | sets the base URL to your backend *(Default: this is set via environmental variables and env file)*  |
@@ -317,7 +317,7 @@ The [config.yaml](autostart/config/config.yaml) provides a way to manually set a
 | `fallback` | the relative internal path to the Internal-Offline-Fallbackpage *(Default: offlinefallback/index.html)*|
 | |
 | **Server Auth** | |
-| *place underneath `auth:`* |
+| *placed underneath `auth:`* |
 | |
 | **Option** | **Description** |
 | `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
@@ -326,24 +326,10 @@ The [config.yaml](autostart/config/config.yaml) provides a way to manually set a
 | **Other Options** | |
 | |
 | **Option** | **Description** |
-| `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
-| `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
-
-<!-- ### **Server Auth**
-place underneath `auth:`
-| Option | Description |
-| --- | --- |
-| `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
-| `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
-
-### **Other Options**
-| Option | Description |
-| --- | --- |
 | `homecall_period` | Interval in seconds between every call from device to the backend to check and update the current screen URL *(Default: 60 seconds)* |
 
- -->
 
-## Python Autostart Script
+# Python Autostart Script
 
 
 *NOTE*: The Current Working Director of the script is the autostart directory!
