@@ -152,31 +152,17 @@ To open the Raspberry-Pi's Command line Settings enter in Terminal:
 sudo raspi-config
 ```
 
-Inside Raspi Configuration config set following: 
+#### Inside Raspi Configuration Window, configure the following settings:
 
 | Configuration | Set |
 | :---       |  :---          | 
 | Disable sleep mode of Display   | Display Options → D4 Screen Blanking → No.     |
-| Video Resolution to 1920x1080/60hz   | Display Options → 1920x1080/60hz. <br/> *(Or use GUI: Einstellungen → Screen Configuration)*    |
+| Video Resolution to 1920x1080/60hz   | Display Options → 1920x1080/60hz. <br/>   |
 | GL Driver  | Advanced Options → GL Driver → G2 GL (Fake KMS)     |
 | <u>Disable</u> the compositor.   | Advanced Options → Compositor → No     |
-<!-- #### **Disable sleep mode of display**
 
-&nbsp;&nbsp;&nbsp; Display Options → D4 Screen Blanking → No.
-#### **Set Video Resolution to 1920x1080/60hz**
-
-&nbsp;&nbsp;&nbsp; Display Options → 1920x1080/60hz.<br/>
-&nbsp;&nbsp;&nbsp;*(Or use GUI: Einstellungen → Screen Configuration)*
-
-#### **GL Driver**
-
-&nbsp;&nbsp;&nbsp; Advanced Options → GL Driver → G2 GL (Fake KMS)
-
-#### **<u>Disable</u> the compositor.**
-
-&nbsp;&nbsp;&nbsp; Advanced Options → Compositor → No -->
-
-### Reboo and Check 3D Drivers
+<!-- | Video Resolution to 1920x1080/60hz   | Display Options → 1920x1080/60hz. <br/> *(Or use GUI: Einstellungen → Screen Configuration)*    | -->
+#### Reboo and Check 3D Drivers
 
 After making these changes, you should be prompted to reboot the Pi. <br/>
 Do so, alternatively run
