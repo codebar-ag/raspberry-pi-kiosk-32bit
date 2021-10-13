@@ -214,7 +214,8 @@ Additional sources: <br/>
 To enhance the Chrome browser performance. You have to enable some Chrome-Flags inside the Browser.
 To do that enter following Chrome URLs inside the URL bar and: <br/>
 
-**Enable:** `chrome://flags/#enable-gpu-rasterization` <br/>
+
+**Enable:** `chrome://flags/#ignore-gpu-blocklist` <br/>
 **Enable:** `chrome://flags/#enable-gpu-rasterization` <br/>
 
 <!-- If Available: <br/> -->
