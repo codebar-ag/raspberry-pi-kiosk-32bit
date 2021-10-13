@@ -302,29 +302,42 @@ export AUTH_TOKEN="<PLACE YOUR TOKEN HERE>" # add environment variable to CWD
 This will be overwritten/deleted on every boot of the Raspberry-Pi.
 
 The [config.yaml](autostart/config/config.yaml) provides a way to manually set and configure different options*** <br/>
-### **Screenurls & Endpoints**
-place underneath `screenurls:`
-| Option | Description |
+<!-- ### **Screenurls & Endpoints** -->
+### config stuff 
+| **Screenurls  & Endpoints** | |
 | --- | --- |
+| *place underneath `screenurls:`* |
+| Option | Description |
 | `base` | sets the base URL to your backend *(Default: this is set via environmental variables and env file)*  |
 | `identification` | the relative URL path to the backend's API identification endpoint.  |
 | `browser_start_url` | The URL to the first page the Kiosk Browser loads on opening, before any request to the backend was made. *(Default: Internal-Offline-Fallbackpage)*  |
 | `browser_start_url_is_internal` | set to True/1 if config browser_start_url is a relative internal file path  will then be read as `file://`. *(eg. offlinefallback/index.html)*  |
 | `fallback` | the relative internal path to the Internal-Offline-Fallbackpage *(Default: offlinefallback/index.html)*|
+| |
+| **Server Auth** | |
+| *place underneath `auth:`* |
+| Option | Description |
+| `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
+| `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
+| |
+| **Other Options** | |
+| Option | Description |
+| `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
+| `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 
-### **Server Auth**
+<!-- ### **Server Auth**
 place underneath `auth:`
 | Option | Description |
 | --- | --- |
 | `user` | username (email) for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 | `token` | token for basic authenticate *(Default: this is set via environmental variables and env file)*  |
 
-### **Others**
+### **Other Options**
 | Option | Description |
 | --- | --- |
 | `homecall_period` | Interval in seconds between every call from device to the backend to check and update the current screen URL *(Default: 60 seconds)* |
 
-
+ -->
 
 ## Python Autostart Script
 
