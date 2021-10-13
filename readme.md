@@ -334,8 +334,8 @@ place underneath `auth:`
 ## Python Autostart Script
 
 
-*WARNING*: The Current Working Director of the script is the autostart directory!
-Change one directory up to autostart folder.
+*NOTE*: The Current Working Director of the script is the autostart directory!
+Change one directory up to the autostart folder.
 
 ```
 cd /home/pi/Scripts/autostart
@@ -353,7 +353,7 @@ _Note: To exit the kioskmode close it with ALT+F4_
 <br/> 
 
 ## Configure Autostart to automatically start on boot
-To start the autostart python script automaticly after every boot add it to the Pi´s boot scripts at lxsession.
+To start the autostart python script automatically after every boot, add it to the Raspberry-P´s boot scripts at `lxsession`.
 
 ```bash
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
