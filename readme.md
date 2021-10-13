@@ -211,8 +211,8 @@ Additional sources: <br/>
 
 ### Enable Chrome Flags:
 
-To enhance the Chrome browser performance. You have to enable some Chrome-Flags inside the Browser.
-To do that enter following Chrome URLs inside the URL bar and: <br/>
+To enhance the Chrome browser performance. You have to enable special Chrome-Flags inside the Browser.  <br/>
+To do that enter following Chrome URLs inside the URL bar <br/>
 
 
 **Enable:** `chrome://flags/#ignore-gpu-blocklist` <br/>
@@ -221,9 +221,9 @@ To do that enter following Chrome URLs inside the URL bar and: <br/>
 <!-- If Available: <br/> -->
 <!-- **Enable:** [chrome://flags/#enable-accelerated-video-decode](chrome://flags/#enable-accelerated-video-decode) <br/> -->
 
-Restart the Chrome browser.
+afterwards restart the Chrome browser.
 
-To check the Chrome browser Graphics Feature Status enter: [chrome://gpu](chrome://gpu)<br/>
+To check the Chrome browser Graphics Feature Status enter: `chrome://gpu` <br/>
 *All features should show a green status text (except Vulkan).* <br/>
 *Currently on (32bit),  The Video Decode features will show 'Software only..'*
 
