@@ -7,7 +7,9 @@ Login: [Promoscreens Backend](https://promoscreens-stage.sonepar.ch/auth/login)<
 
 *? Other steps to do ?*
 
-# Setup Raspberry Pi
+# Raspberry-Pi Promoscreen
+
+Setup of Raspberry-Pi Promoscreen devices running with raspios 32bit (armhf)
 
 ## Hardware
 
@@ -259,7 +261,7 @@ On raspi os explicitly use the '**python3**' & '**pip3**' commands to call pytho
 pip3 install -r requirements.txt
 ```
 
-### Set Up the Config.
+### **Autostart Config Set Up.**
 
 
 _**NOTE:** SECRETS SHOULD NOT BE VISIBLE IN GIT AND USED WITH ENV VARS._
@@ -325,7 +327,7 @@ place underneath `auth:`
 ### **Others**
 | Option | Description |
 | --- | --- |
-| `homecall_period` | Interval in Seconds beetween every call from device to the backend to check and update the current screen url *(Default: 60 seconds)* |
+| `homecall_period` | Interval in seconds between every call from device to the backend to check and update the current screen URL *(Default: 60 seconds)* |
 
 
 
@@ -344,7 +346,6 @@ then run with **python3**
 ```python
 python3 autostary.py
 ```
-
 
 autostart will open the chromium in Fullscreen kioskmode.
 
@@ -369,7 +370,8 @@ selenium.common.exceptions.SessionNotCreatedException: Message: session not crea
 Current browser version is 88.0.4324.187 with binary path /usr/bin/chromium-browser
 ```
 This means: Your Browser and Driver versions are different and do not match.
-in this example the ChromeDriver only supports Chrome-Browser version 93. And you have version 88 Installed.
+in this example, the ChromeDriver only supports Chrome-Browser version 93. And you have version 88 Installed.
+
 
 ### Wrong Driver Binary (64bit Image)
 If you run the python script and receive:<br/> <br/> 
@@ -382,4 +384,4 @@ run: ```which chromedriver``` If this returns
 bash: /usr/bin/chromedriver: cannot execute binary file: Exec format error
 ```
 This means: you possibly installed a false chromedriver architecture binary. eg. ia32 instead of needed armv7l.
-Delete the chromedriver binary and dowload the right armv7l binary version.
+Delete the chromedriver binary and download the right armv7l binary version.
