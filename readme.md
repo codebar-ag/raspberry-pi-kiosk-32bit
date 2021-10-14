@@ -320,7 +320,7 @@ The [config.yaml](autostart/config/config.yaml) provides a way to manually set a
 Change one directory up to the autostart folder.
 
 ```
-cd /home/pi/Scripts/autostart
+cd /home/pi/scripts/autostart
 ```
 
 then run with **python3**
@@ -332,14 +332,23 @@ python3 autostary.py
 autostart will open the chromium in Fullscreen kioskmode.
 
 _Note: To exit the kioskmode close it with ALT+F4_
-<br/> 
+<br/> <br/> 
 
 ## Configure Autostart to automatically start on boot
-To start the autostart python script automatically after every boot, add it to the Raspberry-P´s boot scripts at `lxsession`.
+
+To continuously automatically start the autostart python script and open the Adscreen after every boot, add `start_on_boot.sh` script to the Raspberry-Pi´s lxsession file. <br/>
+Copy the full/absolute path to the [start_on_boot.sh](assets/start_on_boot.sh) file inside the assets directory.
+<br/> eg.:  `/home/pi/scripts/assets/start_on_boot.sh`
 
 ```bash
 sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
 ```
+and add the following line inside the file (with your corresponding file path eg.:) :
+```bash
+@/bin/bash /home/pi/scripts/assets/start_on_boot.sh
+```
+
+Save.<br/> Now on every reboot the browser kiosk will open.
  <br/><br/><br/>
 ## Common Exceptions:
 Common Exceptions on running the python script.
